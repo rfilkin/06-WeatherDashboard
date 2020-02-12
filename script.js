@@ -91,21 +91,24 @@ function add_to_history(new_item){
 
 function render_search_history(){
     var history = JSON.parse(localStorage.getItem("history")); //grab history list from local storage
+    if(history != null){
+        $("#history-list").empty(); //wipe current screen to avoid duplication
 
-    $("#history-list").empty(); //wipe current screen to avoid duplication
-
-    for(var i = 0; i < history.length; i++){
-        var new_button = $("<button>"); //each history item will be a button
-        new_button.attr("class", "list-group-item list-group-item-action");
-        new_button.text(history[i]);
-        new_button.attr("data", history[i]);
-        new_button.on("click", function(){ //button queries for weather conditions & forecast of the button's city
-            current_conditions($(this).text());
-            five_day_forecast($(this).text());
-            localStorage.setItem("last_search", JSON.stringify($(this).text()));
-        })
-        $("#history-list").append(new_button);
+        for(var i = 0; i < history.length; i++){
+            var new_button = $("<button>"); //each history item will be a button
+            new_button.attr("class", "list-group-item list-group-item-action");
+            new_button.text(history[i]);
+            new_button.attr("data", history[i]);
+            new_button.on("click", function(){ //button queries for weather conditions & forecast of the button's city
+                current_conditions($(this).text());
+                five_day_forecast($(this).text());
+                localStorage.setItem("last_search", JSON.stringify($(this).text()));
+            })
+            $("#history-list").append(new_button);
+        }
     }
+
+    
 }
 
 //---------------------------searching functionality
@@ -126,10 +129,13 @@ function render_last_search(){
     //renders the most recent city that was searched, according to the local storage
     
     var last_searched = JSON.parse(localStorage.getItem("last_search"));
-    console.log(last_searched);
-    current_conditions(last_searched);
-    five_day_forecast(last_searched);
-    render_search_history();
+    if (last_searched != null){
+        console.log(last_searched);
+        current_conditions(last_searched);
+        five_day_forecast(last_searched);
+        render_search_history();
+    }
+    
 }
 
 //---------------------------startup 
@@ -137,6 +143,6 @@ function render_last_search(){
 $(document).ready(function() {
     $("#search-btn").on("click", search_city);
     initialize_history();
-    //render_search_history();
+    render_search_history();
     render_last_search();
 });
