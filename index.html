@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/moment/moment.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="./script.js"></script>
+    
+
+    <div class="container" style="margin-left:250px;">
+        <h1 style="background-color: black; color: white; text-align: center;">Weather Dashboard</h1>
+
+        <div class="sidenav" style="position: fixed; top: 0; left: 0; background-color: grey; padding:10px">
+            <div class="sidebar-header">
+                <h3>Search for a city:</h3>
+            </div>
+            
+            <input id="search-box" type="text">
+            <button id="search-btn" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+            </button>
+            <div id="history-list" class="list-group"></div>
+        </div>
+        
+        <div id="current-weather" style="border-style: solid; padding: 20px">
+            <h3 id="current-weather-city">Atlanta (8/15/2019)</h3><img id="current-weather-icon" src="" alt="">
+            <p id="current-weather-temp">Temperature: 90.9 °F</p>
+            <p id="current-weather-humidity">Humidity: 41%</p>
+            <p id="current-weather-windspeed">Wind Speed: 4.7mph</p>
+            <p id="current-weather-UVindex">UV Index: 9.49</p>
+        </div>
+        <div id="five-day-forecast">
+        </div>
+    </div>
+    
+
+</body>
+</html>
