@@ -1,16 +1,7 @@
 
 var APIKEY = "27d770121968a991c04d1c73a8d7f8b7";
 
-function UV_index(latitude, longitude){
-    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKEY + "&lat=" + latitude + "&lon=" + longitude;
-
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function(response) {
-        $("#current-weather-UVindex").text("UV Index: " + response.value);
-    });
-}
+//---------------------------rendering current conditions
 
 function current_conditions(city_name){
 
@@ -34,6 +25,19 @@ function current_conditions(city_name){
         UV_index(response.coord.lat, response.coord.lon);
     });
 }
+
+function UV_index(latitude, longitude){
+    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKEY + "&lat=" + latitude + "&lon=" + longitude;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+        $("#current-weather-UVindex").text("UV Index: " + response.value);
+    });
+}
+
+//---------------------------rendering five day forecast
 
 function five_day_forecast(city_name){
     $("#five-day-forecast").empty();
@@ -65,6 +69,8 @@ function five_day_forecast(city_name){
         }
     });
 }
+
+//---------------------------managing local storage
 
 function initialize_history(){
     if(localStorage.length < 1){ //initialize localstorage if it's empty
@@ -102,6 +108,8 @@ function render_search_history(){
     }
 }
 
+//---------------------------searching functionality
+
 function search_city(){
     //console.log("testing");
     var search_term = $("#search-box").val();
@@ -124,8 +132,11 @@ function render_last_search(){
     render_search_history();
 }
 
+//---------------------------startup 
+
 $(document).ready(function() {
     $("#search-btn").on("click", search_city);
     initialize_history();
+    render_search_history();
     render_last_search();
 });
