@@ -131,7 +131,7 @@ function render_last_search(){
     
     var last_searched = JSON.parse(localStorage.getItem("last_search"));
     if (last_searched != null){
-        console.log(last_searched);
+        console.log("test " + last_searched);
         current_conditions(last_searched);
         five_day_forecast(last_searched);
         render_search_history();
