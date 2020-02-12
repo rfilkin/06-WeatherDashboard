@@ -15,9 +15,10 @@ function current_conditions(city_name){
         
         $("#current-weather-city").empty();
         $("#current-weather-city").text(response.name + " (" + moment().format('l') +") ");
-        var icon = $("img");
+        var icon = $("<img>");
         icon.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
         $("#current-weather-city").append(icon);
+        //$("#current-weather-city").append("<p>example</p>");
 
         $("#current-weather-temp").text("Temperature: " + response.main.temp + "°F");
         $("#current-weather-humidity").text("Humidity: " + response.main.humidity + "%");
