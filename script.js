@@ -5,7 +5,7 @@ var APIKEY = "27d770121968a991c04d1c73a8d7f8b7";
 
 function current_conditions(city_name){
 
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&APPID=" + APIKEY + "&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city_name + "&APPID=" + APIKEY + "&units=imperial";
 
     $.ajax({
         url: queryURL,
@@ -16,7 +16,7 @@ function current_conditions(city_name){
         $("#current-weather-city").empty();
         $("#current-weather-city").text(response.name + " (" + moment().format('l') +") ");
         var icon = $("img");
-        icon.attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+        icon.attr("src", "https://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
         $("#current-weather-city").append(icon);
 
         $("#current-weather-temp").text("Temperature: " + response.main.temp + "°F");
@@ -27,7 +27,7 @@ function current_conditions(city_name){
 }
 
 function UV_index(latitude, longitude){
-    var queryURL = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKEY + "&lat=" + latitude + "&lon=" + longitude;
+    var queryURL = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKEY + "&lat=" + latitude + "&lon=" + longitude;
 
     $.ajax({
         url: queryURL,
@@ -41,7 +41,7 @@ function UV_index(latitude, longitude){
 
 function five_day_forecast(city_name){
     $("#five-day-forecast").empty();
-    var queryURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city_name + "&APPID=" + APIKEY + "&units=imperial";
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city_name + "&APPID=" + APIKEY + "&units=imperial";
 
     $.ajax({
         url: queryURL,
@@ -59,7 +59,7 @@ function five_day_forecast(city_name){
             var day_humidity = $("<p>");
 
             day_date.text(moment().add(i + 1, 'days').format("l"));
-            day_icon.attr("src", "http://openweathermap.org/img/w/" + response.list[i * 8].weather[0].icon + ".png");
+            day_icon.attr("src", "https://openweathermap.org/img/w/" + response.list[i * 8].weather[0].icon + ".png");
             day_temp.text("Temperature: " + response.list[i * 8].main.temp + "°F");
             day_humidity.text("Humidity: " + response.list[i * 8].main.humidity + "%");
 
@@ -137,6 +137,6 @@ function render_last_search(){
 $(document).ready(function() {
     $("#search-btn").on("click", search_city);
     initialize_history();
-    render_search_history();
+    //render_search_history();
     render_last_search();
 });
