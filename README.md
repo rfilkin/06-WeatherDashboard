@@ -8,4 +8,8 @@ The most recent search (whether by search bar or clicking a search button) will 
 At the top-right of the page, the current weather for the searched city will be displayed.
 Below that, a series of 5 boxes will display the weather forecast for the next 5 days at the city's location.
 
-Note: there appears to be a glitch when searching or clicking a recent-search button, where the weather icon on the top of the page won't display. This can be fixed by refreshing the page.
+# Notes: 
+- there appears to be a glitch when searching or clicking a recent-search button, where the weather icon on the top of the page won't display. This can be fixed by refreshing the page.
+
+# deployed version:
+https://rfilkin.github.io/06-WeatherDashboard/
